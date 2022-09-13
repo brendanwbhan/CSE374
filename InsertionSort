@@ -1,0 +1,39 @@
+// Author @Brendan Han
+// CSE374
+// Objective: Learning how to write the insertion sort algorithm
+
+import java.util.*;
+
+public class Solution {
+	
+	/**
+	 * Returns the step of the insertion sort on the given step N
+	 * 
+	 * @param list An ArrayList of the list that needs to be sorted
+	 * @param N The step at which we want to display
+	 * @return the ArrayList sorted at the N-th step
+	 */
+	public static int[] insertionSort(int[] list, int N) { 
+		// A counter to stop the program when count == N
+		int count = 0;
+		
+		for (int i = 1; i < list.length; i++) {
+			// Inserts list[i] into the sorted sequence list[1...i - 1]
+			int key = list[i];
+			int j = i - 1;
+			
+			// A loop to traverse through the previous elements to 
+			// compare and insert the key element in the correct index.
+			// An addition condition to stop the loop at the N-th step
+			while (j >= 0 && list[j] > key && N != count) {
+				list[j + 1] = list[j];
+				j = j - 1;
+				count++;
+			}
+			
+			list[j + 1] = key;
+		}
+		
+		return list;
+	}
+}
